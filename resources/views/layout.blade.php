@@ -7,15 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+    
+    @if( session()->has('status'))
+        <h3 style="color: green">
+            {{ session()->get('status')}}
+        </h3>
+    @endif
 
-    <nav>
-    <ul>s<a href="home">home</a> </ul>
-        <ul><a href="about">about</a> </ul>
-            <ul> <a href="blog">blog</a> </ul>
-                <ul> <a href="contact">contact</a> </ul>
-    </nav>
-
+   <nav>
+       <ul>
+           <li ><a href="home">Home</a></li>
+           <li><a href="about">about</a></li>
+           <li><a href="{{route('posts.create')}}">New Post</a></li>
+       </ul>
+   </nav>
 
     @yield('content')
+
 </body>
 </html>

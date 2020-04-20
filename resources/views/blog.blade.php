@@ -1,2 +1,0 @@
-<h1>hello bog</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil unde eveniet ab harum quas modi animi aliquam reprehenderit ex voluptatibus possimus, dolorum aperiam vero quo fugit atque accusamus in facere?</p>
