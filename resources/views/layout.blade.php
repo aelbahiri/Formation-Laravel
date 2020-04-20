@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href=" {{ mix('/css/app.css') }} ">
+    <link rel="stylesheet" href=" {{ mix('/css/theme.css') }} ">
+
+    <title>Home </title>
 </head>
 <body>
     
@@ -14,15 +17,21 @@
         </h3>
     @endif
 
-   <nav>
-       <ul>
-           <li ><a href="home">Home</a></li>
-           <li><a href="about">about</a></li>
-           <li><a href="{{route('posts.create')}}">New Post</a></li>
-       </ul>
-   </nav>
+     <nav class="navbar navbar-expand navbar-dark bg-success">
+         <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">about</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('posts.create')}}">New Post</a></li>
+         </ul>
+     </nav>
 
+<div class="container">
+    
     @yield('content')
 
+</div>
+
+
+<script src="{{ mix('/js/app.js') }}" ></script>
 </body>
 </html>

@@ -72,7 +72,29 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(){
+    public function update( StorePost $request, $id ){
+
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->slug = Str::slug($request->input('content'), '-');
+
+        $post->save();
+        
+        $request->session()->flash('status', 'Post was Updated successfuly');
+        return redirect()->route('posts.index');
+
+    }
+
+    public function destroy(Request $request, $id){
+
+        // $post = Post::findOrFail($id);
+        // $post->delete();
+        Post::destroy($id);
+
+        $request->session()->flash('status', 'Post Deleted successfuly');
+        return redirect()->route('posts.index');
 
     }
 
