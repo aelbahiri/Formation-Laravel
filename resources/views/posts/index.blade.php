@@ -9,6 +9,17 @@
                  <h2><a href="{{ route('posts.show', ['post' =>$post->id ])}}">{{ $post->title }}</a></h2>
                  <p>{{ $post->content }}</p>
                  <em>{{ $post->created_at->diffForHumans() }}</em>
+                 
+                 @if($post->comments_count)
+                 <div class="forme-inline">
+                     <span class="badge badge-success"> {{ $post->comments_count }} Comments </span>
+                 </div>
+                 @else
+                 <div class="forme-inline">
+                    <span class="badge badge-dark"> No Comments yet! </span>
+                </div>
+                @endif
+                 
                  <a class="btn btn-warning" href=" {{route('posts.edit', ['post' => $post->id]) }} ">edit</a>
 
                  <form class="forme-inline" method="POST" action="{{ route('posts.destroy', ['post' => $post->id ]) }}">

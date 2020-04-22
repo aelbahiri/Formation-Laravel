@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 
 //Routes, // declench function anonyme,  //Declare segement dynamic by using  {..}
+Route::get('/', function(){
+    return view('welcome');
+});
+
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 
