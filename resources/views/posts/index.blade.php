@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -11,18 +11,18 @@
                  <em>{{ $post->created_at->diffForHumans() }}</em>
                  
                  @if($post->comments_count)
-                 <div class="forme-inline">
+                 <div style="display:inline" >
                      <span class="badge badge-success"> {{ $post->comments_count }} Comments </span>
                  </div>
                  @else
-                 <div class="forme-inline">
+                 <div style="display:inline" >
                     <span class="badge badge-dark"> No Comments yet! </span>
                 </div>
                 @endif
                  
                  <a class="btn btn-warning" href=" {{route('posts.edit', ['post' => $post->id]) }} ">edit</a>
 
-                 <form class="forme-inline" method="POST" action="{{ route('posts.destroy', ['post' => $post->id ]) }}">
+                 <form style="display:inline" method="POST" action="{{ route('posts.destroy', ['post' => $post->id ]) }}">
                     @csrf
                     @method('DELETE')
 

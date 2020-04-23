@@ -11,6 +11,10 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['show', 'index']); 
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +28,6 @@ class PostController extends Controller
 
         // $posts = Post::with('comments')->get();
        
-
-
         // foreach($posts as $post){
         //     foreach($post->comments as $comment){
         //         dump($comment);

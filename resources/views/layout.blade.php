@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href=" {{ mix('/css/app.css') }} ">
-    <link rel="stylesheet" href=" {{ mix('/css/theme.css') }} ">
+    {{-- <link rel="stylesheet" href=" {{ mix('/css/app.css') }} "> --}}
+    {{-- <link rel="stylesheet" href=" {{ mix('/css/theme.css') }} "> --}}
+
+       <!-- Scripts -->
+       <script src="{{ asset('js/app.js') }}" defer></script>
+
+       <!-- Fonts -->
+       <link rel="dns-prefetch" href="//fonts.gstatic.com">
+       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+   
+       <!-- Styles -->
+       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <title>Home </title>
 </head>
@@ -17,13 +27,8 @@
         </h3>
     @endif
 
-     <nav class="navbar navbar-expand navbar-dark bg-success">
-         <ul class="nav navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">about</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{route('posts.create')}}">New Post</a></li>
-         </ul>
-     </nav>
+  
+
 
 <div class="container">
     

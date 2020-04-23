@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,6 @@ Route::resource('/posts', 'PostController');
 // Route::get('/contact', function () {
 //     return view('contact');
 // });
+Auth::routes();
+
+Route::get('/home', 'HomeController@home')->name('home');
