@@ -12,7 +12,8 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['show', 'index']); 
+
+        $this->middleware('auth')->except(['show', 'index','all', 'archive']);
     }
 
     /**
@@ -26,7 +27,6 @@ class PostController extends Controller
 
         // DB::enableQueryLog();
 
-        // $posts = Post::with('comments')->get();
        
         // foreach($posts as $post){
         //     foreach($post->comments as $comment){
@@ -34,16 +34,36 @@ class PostController extends Controller
         //     }
         // }
 
-        $posts = Post::withCount('comments')->get();
+        $posts = Post::withCount('comments')->orderBy('updated_at', 'desc')->get();
 
         // dd(DB::getQueryLog());
 
-        return view('posts.index', [
-            'posts' => $posts 
-
-        ]);
+        return view('posts.index', 
+        [ 'posts' => $posts, 'tab'=> 'list' ]);
 
     }
+
+    public function archive() {
+
+          // onlyTrashed, withtrashed sont des methoed d'elequent
+
+        $posts = Post::onlyTrashed()->withCount('comments')->orderBy('updated_at', 'desc')->get();
+
+        return view('posts.index', 
+        [ 'posts' => $posts, 'tab'=> 'archive']);
+
+    }
+
+    public function all()
+    {
+      
+        $posts = Post::withTrashed()->withCount('comments')->orderBy('updated_at', 'desc')->get();
+
+        return view('posts.index', 
+        [ 'posts' => $posts, 'tab'=> 'all' ]);
+
+    }
+
 
     /**
      * Display the specified resource.
@@ -51,6 +71,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function show($id)
     {
             // dd(\App\Post::find($id)); debugage
@@ -116,6 +138,15 @@ class PostController extends Controller
 
         $request->session()->flash('status', 'Post Deleted successfuly');
         return redirect()->route('posts.index');
+
+    }
+
+    public function restore ($id){
+
+        // dd($id);
+        $post = Post::onlyTrashed()->where('id', $id)->first();
+        $post->restore();
+        return redirect()->back();
 
     }
 

@@ -21,11 +21,7 @@
 </head>
 <body>
     
-    @if( session()->has('status'))
-        <h3 style="color: green">
-            {{ session()->get('status')}}
-        </h3>
-    @endif
+   
 
   
 

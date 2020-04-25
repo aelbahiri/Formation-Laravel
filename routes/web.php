@@ -23,6 +23,12 @@ Route::get('/', function(){
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 
+Route::get('/posts/archive', 'PostController@archive');
+Route::patch('/posts/{id}/restore', 'PostController@restore');
+
+Route::get('/posts/all', 'PostController@all');
+
+Auth::routes();
 Route::resource('/posts', 'PostController');
 
 
